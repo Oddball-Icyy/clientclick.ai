@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ClientClick.ai — Deal Generation & Growth System for Roofing Contractors</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --pink:#F472A8; --pink-soft:#FDE8F2; --pink-dark:#C94F82;
+  --blue:#4B8EF1; --blue-soft:#EEF4FF; --blue-dark:#2563C8;
+  --cyan:#38BDF8; --cyan-dk:#0EA5D6;
+  --navy:#0D1B3E; --navy-mid:#152255; --navy-light:#1E2F66;
+  --white:#FFFFFF; --off:#F7F8FC;
+  --gray-700:#374151; --gray-500:#6B7280; --gray-100:#F3F4F6;
+  --bd:rgba(255,255,255,0.08); --bdl:#E5E7EB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--pink);border-radius:2px;}
+
+/* TICKER */
+.ticker-wrap{background:linear-gradient(90deg,var(--pink-dark),var(--blue-dark));color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:8px 0;}
+.ticker-inner{display:inline-block;animation:ticker 35s linear infinite;}
+.tsep{margin:0 40px;opacity:.5;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 6vw;
+  background:var(--white);            /* Changed background to white */
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--bd);
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-img{height:38px;width:auto;display:block;flex-shrink:0;}
+footer .logo-img{height:32px;}
+.logo-mark{
+  font-family:'Manrope',sans-serif;
+  font-size:19px;
+  font-weight:900;
+  color:var(--pink);                /* Changed logo text to pink */
+  letter-spacing:-0.02em;
+}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-a{
+  font-size:13px;
+  font-weight:500;
+  color:var(--pink);                /* Changed nav links to pink */
+  text-decoration:none;
+  transition:color .2s;
+  letter-spacing:.01em;
+}
+.nav-a:hover{color:var(--pink-dark);}
+.nav-btn{background:var(--pink);color:white;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none;transition:all .2s;letter-spacing:.02em;}
+.nav-btn:hover{background:var(--pink-dark);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;} /* Changed hamburger bars to pink */
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-size:22px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;}
+.mobile-nav a:hover{color:var(--pink);}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* HERO */
+.hero{position:relative;padding:110px 6vw 100px;overflow:hidden;min-height:92vh;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(75,142,241,.12) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(244,114,168,.1) 0%,transparent 60%);pointer-events:none;}
+.hero-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);}
+.hero-inner{max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 0.9fr;gap:72px;align-items:center;position:relative;z-index:1;}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:56px;}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);background:rgba(244,114,168,.1);border:1px solid rgba(244,114,168,.2);padding:6px 14px;border-radius:100px;margin-bottom:24px;}
+.ey-dot{width:6px;height:6px;background:var(--pink);border-radius:50%;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,5.5vw,72px);line-height:1.05;font-weight:400;color:var(--white);margin-bottom:24px;letter-spacing:-0.01em;}
+.hero h1 .pk{font-style:italic;color:var(--pink);}
+.hero h1 .cy{color:var(--cyan);}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.55);max-width:520px;margin-bottom:44px;line-height:1.8;font-weight:400;}
+.hero-sub strong{color:rgba(255,255,255,.9);font-weight:600;}
+.hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:48px;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:white;font-size:15px;font-weight:700;padding:16px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 28px rgba(244,114,168,.35);border:none;cursor:pointer;letter-spacing:.01em;}
+.btn-primary:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 12px 36px rgba(244,114,168,.45);}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.7);font-size:15px;font-weight:600;padding:16px 28px;border-radius:10px;text-decoration:none;transition:all .2s;border:1px solid var(--bd);}
+.btn-ghost:hover{color:white;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.04);}
+.hero-proof{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.proof-avs{display:flex;}
+.proof-avs span{width:34px;height:34px;border-radius:50%;border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-left:-10px;}
+.proof-avs span:first-child{margin-left:0;}
+.av1{background:linear-gradient(135deg,#F472A8,#C94F82);}
+.av2{background:linear-gradient(135deg,#4B8EF1,#2563C8);}
+.av3{background:linear-gradient(135deg,#38BDF8,#0EA5D6);}
+.av4{background:linear-gradient(135deg,#F472A8,#4B8EF1);}
+.proof-text{font-size:13px;color:rgba(255,255,255,.5);}
+.proof-text strong{color:var(--white);}
+.proof-stars{color:#FBBF24;font-size:12px;letter-spacing:1px;}
+
+/* HERO DASHBOARD */
+.hero-visual{position:relative;}
+.dash-mock{background:var(--navy-mid);border:1px solid var(--bd);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5);}
+.dash-bar{background:var(--navy-light);padding:14px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--bd);}
+.dash-dots{display:flex;gap:6px;}
+.dash-dot{width:10px;height:10px;border-radius:50%;}
+.dd-r{background:#FF5F57;}.dd-y{background:#FEBC2E;}.dd-g{background:#28C840;}
+.dash-title{font-size:12px;color:rgba(255,255,255,.35);margin-left:8px;font-weight:500;}
+.dash-body{padding:24px;}
+.dash-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.dash-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.live-pill{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);background:rgba(244,114,168,.12);border:1px solid rgba(244,114,168,.2);padding:3px 10px;border-radius:100px;display:flex;align-items:center;gap:5px;}
+.live-pill::before{content:'';width:5px;height:5px;background:var(--pink);border-radius:50%;}
+.dash-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px;}
+.ds{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;}
+.ds-val{font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.03em;line-height:1;margin-bottom:4px;}
+.ds-val.pk{color:var(--pink);}.ds-val.cy{color:var(--cyan);}.ds-val.gn{color:#10B981;}
+.ds-lbl{font-size:10px;color:rgba(255,255,255,.35);font-weight:500;}
+.dash-chart{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:16px;}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:64px;margin-top:10px;}
+.bar{border-radius:4px 4px 0 0;flex:1;}
+.bar.pk{background:linear-gradient(180deg,var(--pink),var(--pink-dark));}
+.bar.cy{background:linear-gradient(180deg,var(--cyan),var(--blue-dark));}
+.bar.dm{background:rgba(255,255,255,.1);}
+.notif{position:absolute;background:var(--navy-mid);border:1px solid var(--bd);border-radius:14px;padding:12px 16px;box-shadow:0 16px 48px rgba(0,0,0,.4);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+.n1{top:-18px;right:-20px;animation:fA 4s ease-in-out infinite;}
+.n2{bottom:-16px;left:-20px;animation:fB 4s ease-in-out infinite 1s;}
+@keyframes fA{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes fB{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.ni{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ni-pk{background:rgba(244,114,168,.2);}.ni-gn{background:rgba(16,185,129,.2);}
+.nt strong{display:block;font-size:12px;font-weight:700;color:white;}
+.nt span{font-size:11px;color:rgba(255,255,255,.4);}
+
+/* MARQUEE */
+.marquee-sec{padding:36px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);overflow:hidden;}
+.marquee-lbl{text-align:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px;}
+.marquee-track{display:flex;gap:60px;white-space:nowrap;animation:mq 28s linear infinite;}
+.marquee-item{font-size:12px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.marquee-item::before{content:'✦';color:var(--pink);font-size:9px;opacity:.5;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SHARED */
+.sw{max-width:1240px;margin:0 auto;padding:0 6vw;}
+.sey{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:18px;}
+.ey-pk{color:var(--pink);background:rgba(244,114,168,.1);border:1px solid rgba(244,114,168,.2);}
+.ey-cy{color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);}
+.ey-wh{color:rgba(255,255,255,.45);background:rgba(255,255,255,.05);border:1px solid var(--bd);}
+.sh2{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.1;color:var(--white);margin-bottom:16px;letter-spacing:-0.01em;}
+.sh2 em{font-style:italic;color:var(--pink);}
+.sh2 .cy{color:var(--cyan);}
+.slead{font-size:17px;color:rgba(255,255,255,.45);max-width:580px;line-height:1.8;font-weight:400;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.tc{text-align:center;}
+
+/* WHAT WE DO */
+.what{padding:110px 0;background:var(--navy);}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px;}
+@media(max-width:860px){.what-grid{grid-template-columns:1fr;gap:48px;}}
+.what-steps{display:flex;flex-direction:column;}
+.ws{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--bd);}
+.ws:last-child{border-bottom:none;}
+.ws-nc{display:flex;flex-direction:column;align-items:center;}
+.ws-num{width:40px;height:40px;border-radius:10px;background:rgba(244,114,168,.1);border:1px solid rgba(244,114,168,.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--pink);flex-shrink:0;}
+.ws-line{width:1px;flex:1;background:rgba(244,114,168,.15);margin-top:8px;}
+.ws:last-child .ws-line{display:none;}
+.ws-body h4{font-size:17px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.01em;}
+.ws-body p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;}
+.what-visual{background:var(--navy-mid);border:1px solid var(--bd);border-radius:24px;overflow:hidden;}
+.vis-hdr{padding:18px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.vis-hdr-lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.vis-body{padding:20px;}
+.pipe-row{display:flex;align-items:center;gap:10px;padding:13px 16px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:10px;margin-bottom:8px;}
+.pipe-row:last-child{margin-bottom:0;}
+.pdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dp-pk{background:var(--pink);}.dp-cy{background:var(--cyan);}.dp-gn{background:#10B981;}.dp-yw{background:#FBBF24;}
+.plbl{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);flex:1;}
+.pval{font-size:12px;font-weight:700;color:var(--pink);}
+.pbadge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:3px 8px;border-radius:100px;}
+.b-new{background:rgba(244,114,168,.15);color:var(--pink);}
+.b-hot{background:rgba(251,191,36,.15);color:#FBBF24;}
+.b-bkd{background:rgba(16,185,129,.15);color:#10B981;}
+.b-cls{background:rgba(56,189,248,.12);color:var(--cyan);}
+.pipe-total{margin-top:18px;padding-top:16px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;}
+.pipe-total-lbl{font-size:12px;color:rgba(255,255,255,.3);}
+.pipe-total-val{font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;color:var(--pink);}
+
+/* SERVICES */
+.services{padding:110px 0;background:var(--navy-mid);}
+.svc-intro{text-align:center;margin-bottom:64px;}
+.svc-intro .slead{margin:0 auto;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+.svc-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:20px;padding:34px 28px;transition:all .3s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue));opacity:0;transition:opacity .3s;}
+.svc-card:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);transform:translateY(-4px);}
+.svc-card:hover::before{opacity:1;}
+.svc-card.fc{background:linear-gradient(135deg,rgba(244,114,168,.08),rgba(75,142,241,.05));border-color:rgba(244,114,168,.2);}
+.svc-card.fc::before{opacity:1;}
+.svc-ico{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:20px;}
+.si-pk{background:rgba(244,114,168,.12);}.si-cy{background:rgba(56,189,248,.12);}.si-gn{background:rgba(16,185,129,.12);}.si-yw{background:rgba(251,191,36,.12);}.si-pu{background:rgba(139,92,246,.12);}.si-or{background:rgba(249,115,22,.12);}
+.svc-card h3{font-size:18px;font-weight:800;color:var(--white);margin-bottom:10px;letter-spacing:-0.01em;}
+.svc-card p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:18px;}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.svc-list li{font-size:13px;color:rgba(255,255,255,.4);display:flex;gap:8px;align-items:flex-start;}
+.svc-list li::before{content:'→';color:var(--pink);font-weight:700;flex-shrink:0;}
+
+/* DIFFERENCE */
+.diff{padding:110px 0;background:var(--navy);}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px;}
+@media(max-width:860px){.diff-grid{grid-template-columns:1fr;gap:48px;}}
+.diff-cards{display:flex;flex-direction:column;gap:14px;}
+.diff-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:all .2s;}
+.diff-card:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+.di{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.diff-card h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.diff-card p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;}
+.comp-tbl{background:var(--navy-mid);border:1px solid var(--bd);border-radius:20px;overflow:hidden;}
+.comp-hdr{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 22px;border-bottom:1px solid var(--bd);background:rgba(255,255,255,.03);}
+.comp-hdr span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.comp-hdr .cc{color:var(--pink);}
+.comp-hdr .ot{color:rgba(255,255,255,.25);}
+.comp-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:13px 22px;border-bottom:1px solid var(--bd);align-items:center;}
+.comp-row:last-child{border-bottom:none;}
+.comp-row:hover{background:rgba(255,255,255,.02);}
+.comp-feat{font-size:13px;color:rgba(255,255,255,.5);}
+.comp-yes{color:#10B981;font-size:16px;font-weight:800;}
+.comp-no{color:rgba(255,255,255,.18);font-size:15px;}
+.comp-pt{color:#FBBF24;font-size:12px;font-weight:600;}
+
+/* RESULTS */
+.results{padding:110px 0;background:var(--navy-mid);}
+.results-intro{text-align:center;margin-bottom:64px;}
+.results-intro .slead{margin:0 auto;}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:56px;}
+@media(max-width:900px){.metrics{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.metrics{grid-template-columns:1fr;}}
+.mc{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:20px;padding:30px 26px;text-align:center;position:relative;overflow:hidden;}
+.mc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;}
+.mc-pk::after{background:linear-gradient(90deg,var(--pink),var(--pink-dark));}
+.mc-cy::after{background:linear-gradient(90deg,var(--cyan),var(--blue-dark));}
+.mc-gn::after{background:linear-gradient(90deg,#10B981,#059669);}
+.mc-yw::after{background:linear-gradient(90deg,#FBBF24,#D97706);}
+.mc-val{font-family:'Manrope',sans-serif;font-size:clamp(34px,4vw,50px);font-weight:900;line-height:1;letter-spacing:-0.04em;margin-bottom:8px;}
+.mv-pk{color:var(--pink);}.mv-cy{color:var(--cyan);}.mv-gn{color:#10B981;}.mv-yw{color:#FBBF24;}
+.mc-lbl{font-size:13px;color:rgba(255,255,255,.4);font-weight:500;line-height:1.5;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:860px){.testi-grid{grid-template-columns:1fr;}}
+.tc-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:20px;padding:30px 26px;display:flex;flex-direction:column;gap:14px;}
+.tc-stars{color:#FBBF24;font-size:13px;letter-spacing:2px;}
+.tc-res{font-family:'DM Serif Display',serif;font-size:22px;font-style:italic;color:var(--pink);}
+.tc-card p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;flex:1;}
+.tc-auth strong{font-size:14px;font-weight:700;color:var(--white);display:block;}
+.tc-auth span{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* WHO WE SERVE */
+.who{padding:110px 0;background:var(--navy);}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+@media(max-width:760px){.who-grid{grid-template-columns:1fr;}}
+.who-card{border:1px solid var(--bd);border-radius:20px;padding:34px 28px;background:rgba(255,255,255,.02);transition:all .25s;}
+.who-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);}
+.who-card.wc-feat{background:linear-gradient(135deg,rgba(244,114,168,.1),rgba(75,142,241,.05));border-color:rgba(244,114,168,.25);}
+.wtag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:16px;}
+.wt-pk{color:var(--pink);background:rgba(244,114,168,.12);border:1px solid rgba(244,114,168,.2);}
+.wt-cy{color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);}
+.wt-wh{color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);border:1px solid var(--bd);}
+.who-card h3{font-size:20px;font-weight:800;color:var(--white);margin-bottom:10px;}
+.who-card p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:18px;}
+.who-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.who-list li{font-size:13px;color:rgba(255,255,255,.35);display:flex;gap:8px;}
+.who-list li::before{content:'✓';color:#10B981;font-weight:700;flex-shrink:0;}
+
+/* PROCESS */
+.process{padding:110px 0;background:var(--navy-mid);}
+.proc-intro{text-align:center;margin-bottom:80px;}
+.proc-intro .slead{margin:0 auto;}
+.proc-timeline{position:relative;max-width:900px;margin:0 auto;}
+.proc-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(244,114,168,.25),rgba(56,189,248,.25),transparent);transform:translateX(-50%);}
+@media(max-width:700px){.proc-timeline::before{left:22px;}}
+.proc-step{display:grid;grid-template-columns:1fr 64px 1fr;gap:28px;align-items:start;margin-bottom:60px;}
+.proc-step:last-child{margin-bottom:0;}
+@media(max-width:700px){.proc-step{grid-template-columns:64px 1fr;}.proc-step .pr-r{display:none;}.pl-empty{display:none;}}
+.pr-l,.pr-r{padding-top:6px;}
+.pr-c{display:flex;justify-content:center;align-items:flex-start;padding-top:2px;}
+.ps-bub{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:15px;font-weight:900;flex-shrink:0;position:relative;z-index:1;}
+.pb-pk{background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:white;box-shadow:0 0 0 8px rgba(244,114,168,.1);}
+.pb-cy{background:linear-gradient(135deg,var(--cyan),var(--blue-dark));color:white;box-shadow:0 0 0 8px rgba(56,189,248,.1);}
+.ps-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;}
+.ps-day{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:8px;}
+.ps-card h4{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.ps-card p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;}
+
+/* PRICING */
+.pricing{padding:110px 0;background:var(--navy);}
+.price-intro{text-align:center;margin-bottom:64px;}
+.price-intro .slead{margin:0 auto;}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:1000px){.price-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.price-grid{grid-template-columns:1fr;}}
+.price-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:20px;padding:30px 24px;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden;}
+.price-card:hover{background:rgba(255,255,255,.05);transform:translateY(-4px);}
+.price-card.pf{background:linear-gradient(135deg,rgba(244,114,168,.1),rgba(75,142,241,.06));border-color:rgba(244,114,168,.3);box-shadow:0 8px 40px rgba(244,114,168,.12);}
+.pc-rib{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--pink),var(--cyan));color:white;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;}
+.pc-tier{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:14px;}
+.pc-price{font-family:'Manrope',sans-serif;font-size:40px;font-weight:900;letter-spacing:-0.04em;color:var(--white);line-height:1;margin-bottom:4px;}
+.pc-cad{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:12px;}
+.pc-name{font-size:16px;font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.3;}
+.pc-div{border:none;border-top:1px solid var(--bd);margin-bottom:16px;}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;}
+.pc-list li{font-size:13px;color:rgba(255,255,255,.4);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.pc-list li::before{content:'→';color:var(--pink);font-weight:700;flex-shrink:0;}
+
+/* FAQ */
+.faq{padding:110px 0;background:var(--navy-mid);}
+.faq-intro{text-align:center;margin-bottom:56px;}
+.faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:960px;margin:0 auto;}
+@media(max-width:700px){.faq-cols{grid-template-columns:1fr;}}
+.faq-item{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:14px;padding:22px 24px;cursor:pointer;transition:all .2s;}
+.faq-item:hover{background:rgba(255,255,255,.05);}
+.faq-item.open{border-color:rgba(244,114,168,.2);}
+.faq-q{font-size:14px;font-weight:600;color:var(--white);display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-ico{color:var(--pink);font-size:20px;flex-shrink:0;transition:transform .3s;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:13px;color:rgba(255,255,255,.4);line-height:1.75;}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px;}
+.faq-item.open .faq-ico{transform:rotate(45deg);}
+
+/* FINAL CTA */
+.cta-final{padding:120px 6vw;background:var(--navy);text-align:center;position:relative;overflow:hidden;}
+.cta-final::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(244,114,168,.1) 0%,transparent 65%);pointer-events:none;}
+.cta-final::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(56,189,248,.07) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.cta-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:24px;}
+.cta-inner h2{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,60px);font-weight:400;line-height:1.08;color:var(--white);margin-bottom:20px;}
+.cta-inner h2 em{font-style:italic;color:var(--pink);}
+.cta-inner p{font-size:17px;color:rgba(255,255,255,.4);margin-bottom:44px;line-height:1.8;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+.cta-note{font-size:13px;color:rgba(255,255,255,.22);}
+
+/* FOOTER */
+footer{background:rgba(5,10,25,.96);border-top:1px solid var(--bd);padding:64px 6vw 32px;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px;}
+@media(max-width:860px){.ft-top{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:480px){.ft-top{grid-template-columns:1fr;}}
+.ft-tagline{font-size:14px;color:rgba(255,255,255,.3);margin-top:12px;max-width:260px;line-height:1.7;}
+.ft-col h5{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:16px;}
+.ft-col a{display:block;font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.ft-col a:hover{color:var(--white);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd);padding-top:24px;flex-wrap:wrap;gap:12px;}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.2);}
+.ft-legal{display:flex;gap:24px;}
+.ft-legal a{font-size:12px;color:rgba(255,255,255,.2);text-decoration:none;}
+.ft-legal a:hover{color:rgba(255,255,255,.5);}
+</style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobNav">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#results" onclick="closeMob()">Results</a>
+  <a href="#process" onclick="closeMob()">How It Works</a>
+  <a href="#who" onclick="closeMob()">Who We Serve</a>
+  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="#contact" class="btn-primary" onclick="closeMob()">Book a Call →</a>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>Deal Generation for Roofing Contractors</span><span class="tsep">✦</span>
+    <span>3–5× More Booked Jobs Per Week</span><span class="tsep">✦</span>
+    <span>AI-Powered Lead Qualification 24/7</span><span class="tsep">✦</span>
+    <span>Only 3 Contractors Per Market — Exclusive</span><span class="tsep">✦</span>
+    <span>Missed Call Text-Back in 60 Seconds</span><span class="tsep">✦</span>
+    <span>Results Guaranteed or We Work Free</span><span class="tsep">✦</span>
+    <span>Deal Generation for Roofing Contractors</span><span class="tsep">✦</span>
+    <span>3–5× More Booked Jobs Per Week</span><span class="tsep">✦</span>
+    <span>AI-Powered Lead Qualification 24/7</span><span class="tsep">✦</span>
+    <span>Only 3 Contractors Per Market — Exclusive</span><span class="tsep">✦</span>
+    <span>Missed Call Text-Back in 60 Seconds</span><span class="tsep">✦</span>
+    <span>Results Guaranteed or We Work Free</span><span class="tsep">✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="" class="logo-img" width="38" height="38"/>
+    <span class="logo-mark">clientclick.ai</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services" class="nav-a">Services</a>
+    <a href="#results" class="nav-a">Results</a>
+    <a href="#process" class="nav-a">How It Works</a>
+    <a href="#who" class="nav-a">Who We Serve</a>
+    <a href="#pricing" class="nav-a">Pricing</a>
+    <a href="#contact" class="nav-btn">Book a Free Call →</a>
+  </div>
+  <button class="hamburger" onclick="openMob()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="ey-dot"></span>Deal Generation · Roofing Contractors</div>
+      <h1>We Don't Just Run Ads.<br/>We Build Your <span class="pk">Deal Flow</span><br/>From the <span class="cy">Ground Up.</span></h1>
+      <p class="hero-sub">ClientClick.ai is a <strong>full-stack deal generation agency</strong> built exclusively for roofing contractors. We combine paid media, AI automation, and conversion systems to fill your calendar with <strong>high-value emergency repair jobs</strong> — on autopilot.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Book a Free Strategy Call →</a>
+        <a href="#services" class="btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-avs">
+          <span class="av1">M</span><span class="av2">J</span><span class="av3">D</span><span class="av4">R</span>
+        </div>
+        <div class="proof-text">
+          <div class="proof-stars">★★★★★</div>
+          <strong>47+ roofing contractors</strong> scaled with our system
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div style="position:relative;">
+        <div class="dash-mock">
+          <div class="dash-bar">
+            <div class="dash-dots"><div class="dash-dot dd-r"></div><div class="dash-dot dd-y"></div><div class="dash-dot dd-g"></div></div>
+            <span class="dash-title">ClientClick Dashboard — Live</span>
+          </div>
+          <div class="dash-body">
+            <div class="dash-row">
+              <span class="dash-lbl">This Month</span>
+              <span class="live-pill">Live</span>
+            </div>
+            <div class="dash-stats">
+              <div class="ds"><div class="ds-val pk">$74K</div><div class="ds-lbl">Revenue Added</div></div>
+              <div class="ds"><div class="ds-val cy">23</div><div class="ds-lbl">Jobs Booked</div></div>
+              <div class="ds"><div class="ds-val gn">4.8×</div><div class="ds-lbl">Lead Conv.</div></div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-lbl">Weekly Bookings</div>
+              <div class="chart-bars">
+                <div class="bar dm" style="height:32%"></div>
+                <div class="bar dm" style="height:44%"></div>
+                <div class="bar cy" style="height:54%"></div>
+                <div class="bar cy" style="height:62%"></div>
+                <div class="bar pk" style="height:76%"></div>
+                <div class="bar pk" style="height:86%"></div>
+                <div class="bar pk" style="height:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="notif n1">
+          <div class="ni ni-pk">🔔</div>
+          <div class="nt"><strong>New Lead — Storm Damage</strong><span>Auto-qualified · 2 min ago</span></div>
+        </div>
+        <div class="notif n2">
+          <div class="ni ni-gn">✓</div>
+          <div class="nt"><strong>Appointment Booked — $4,200</strong><span>Full replacement · Tomorrow 9am</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-sec">
+  <div class="marquee-lbl">Trusted by roofing contractors across North America</div>
+  <div class="marquee-track">
+    <span class="marquee-item">Emergency Repair Specialists</span>
+    <span class="marquee-item">Storm Damage Contractors</span>
+    <span class="marquee-item">Residential Roofing Companies</span>
+    <span class="marquee-item">Full Replacement Experts</span>
+    <span class="marquee-item">Insurance Claim Roofers</span>
+    <span class="marquee-item">Commercial Roofing</span>
+    <span class="marquee-item">New Construction</span>
+    <span class="marquee-item">Emergency Repair Specialists</span>
+    <span class="marquee-item">Storm Damage Contractors</span>
+    <span class="marquee-item">Residential Roofing Companies</span>
+    <span class="marquee-item">Full Replacement Experts</span>
+    <span class="marquee-item">Insurance Claim Roofers</span>
+    <span class="marquee-item">Commercial Roofing</span>
+    <span class="marquee-item">New Construction</span>
+  </div>
+</div>
+
+<!-- ════ WHAT WE DO ════ -->
+<section class="what" id="what">
+  <div class="sw">
+    <div class="what-grid">
+      <div class="reveal">
+        <div class="sey ey-pk">What We Do</div>
+        <h2 class="sh2">We turn storm events into <em>booked revenue</em> — before competitors wake up.</h2>
+        <p class="slead" style="margin-bottom:40px;">Most roofing companies rely on referrals, door-knocking, or shared lead services. We build an engineered system that generates exclusive, high-intent leads and converts them into paid jobs automatically.</p>
+        <div class="what-steps">
+          <div class="ws">
+            <div class="ws-nc"><div class="ws-num">01</div><div class="ws-line"></div></div>
+            <div class="ws-body"><h4>Generate Exclusive Emergency Leads</h4><p>We run targeted Meta and Google campaigns that intercept homeowners searching for emergency roof repair in your exact zip codes — the moment intent spikes after a storm.</p></div>
+          </div>
+          <div class="ws">
+            <div class="ws-nc"><div class="ws-num">02</div><div class="ws-line"></div></div>
+            <div class="ws-body"><h4>Qualify Every Lead With AI — Instantly</h4><p>Our AI agent responds to every inquiry within 60 seconds, asks qualification questions, handles objections, and filters out tire-kickers before they reach your calendar.</p></div>
+          </div>
+          <div class="ws">
+            <div class="ws-nc"><div class="ws-num">03</div><div class="ws-line"></div></div>
+            <div class="ws-body"><h4>Book Appointments Automatically</h4><p>Qualified leads get auto-booked directly into your calendar. You show up to the estimate. We handled everything else — including reminders and confirmations.</p></div>
+          </div>
+          <div class="ws">
+            <div class="ws-nc"><div class="ws-num">04</div></div>
+            <div class="ws-body"><h4>Close More Jobs With Follow-Up Sequences</h4><p>Automated SMS and email sequences keep leads warm, send reminders, collect Google reviews, and generate referrals — all without lifting a finger.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="what-visual">
+          <div class="vis-hdr">
+            <span class="vis-hdr-lbl">Live Deal Pipeline</span>
+            <span class="live-pill">Live</span>
+          </div>
+          <div class="vis-body">
+            <div class="pipe-row"><div class="pdot dp-pk"></div><span class="plbl">Sarah M. — Hail Damage</span><span class="pbadge b-new">New Lead</span><span class="pval">$6,400</span></div>
+            <div class="pipe-row"><div class="pdot dp-yw"></div><span class="plbl">John T. — Storm Leak</span><span class="pbadge b-hot">Qualifying</span><span class="pval">$3,200</span></div>
+            <div class="pipe-row"><div class="pdot dp-cy"></div><span class="plbl">Mike R. — Full Replacement</span><span class="pbadge b-bkd">Booked</span><span class="pval">$14,000</span></div>
+            <div class="pipe-row"><div class="pdot dp-pk"></div><span class="plbl">Lisa K. — Insurance Claim</span><span class="pbadge b-new">New Lead</span><span class="pval">$8,900</span></div>
+            <div class="pipe-row"><div class="pdot dp-gn"></div><span class="plbl">Dave P. — Emergency Patch</span><span class="pbadge b-cls">Closed ✓</span><span class="pval">$2,100</span></div>
+            <div class="pipe-row"><div class="pdot dp-gn"></div><span class="plbl">Carol W. — Flat Roof</span><span class="pbadge b-cls">Closed ✓</span><span class="pval">$11,500</span></div>
+            <div class="pipe-total"><span class="pipe-total-lbl">Pipeline Total</span><span class="pipe-total-val">$46,100</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ SERVICES ════ -->
+<section class="services" id="services">
+  <div class="sw">
+    <div class="svc-intro reveal">
+      <div class="sey ey-cy">Our Services</div>
+      <h2 class="sh2">Every tool a roofing contractor needs to <em>dominate their market.</em></h2>
+      <p class="slead">We don't sell one-size-fits-all marketing packages. We build integrated deal generation systems where every component works together to maximize booked revenue.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card fc reveal">
+        <div class="svc-ico si-pk">🎯</div>
+        <h3>Paid Media Management</h3>
+        <p>Precision-targeted Meta and Google ad campaigns engineered for emergency roofing intent. We write the copy, build the creatives, and optimize daily.</p>
+        <ul class="svc-list">
+          <li>Meta Ads (Facebook + Instagram)</li>
+          <li>Google Search & Display</li>
+          <li>TikTok storm-season campaigns</li>
+          <li>Pre-built roofing ad templates</li>
+          <li>A/B testing & daily optimization</li>
+          <li>Dedicated ad account management</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.1s">
+        <div class="svc-ico si-cy">🤖</div>
+        <h3>AI Lead Qualification</h3>
+        <p>Our AI agent handles every inquiry 24/7 — qualifying leads, answering questions, and filtering out unqualified prospects before they reach your team.</p>
+        <ul class="svc-list">
+          <li>Instant missed-call text-back (60s)</li>
+          <li>AI website chatbot</li>
+          <li>Instagram DM automation</li>
+          <li>Phone call qualification agent</li>
+          <li>Lead scoring & prioritization</li>
+          <li>CRM integration & tagging</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.2s">
+        <div class="svc-ico si-gn">📅</div>
+        <h3>Automated Booking System</h3>
+        <p>Eliminate phone tag. Our booking system integrates with your calendar and auto-schedules qualified leads into available estimate slots.</p>
+        <ul class="svc-list">
+          <li>Automatic calendar scheduling</li>
+          <li>Appointment reminders (SMS + email)</li>
+          <li>No-show reduction sequences</li>
+          <li>Rescheduling automation</li>
+          <li>Google Calendar integration</li>
+          <li>Real-time availability sync</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.1s">
+        <div class="svc-ico si-yw">⭐</div>
+        <h3>Reputation Management</h3>
+        <p>Your Google rating is your #1 sales asset. We automate review collection after every completed job and help you rank above competitors in local search.</p>
+        <ul class="svc-list">
+          <li>Automated Google review requests</li>
+          <li>Review response management</li>
+          <li>Local SEO optimization</li>
+          <li>Keyword & FAQ content</li>
+          <li>Google Business Profile management</li>
+          <li>Competitor ranking analysis</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.2s">
+        <div class="svc-ico si-pu">🌐</div>
+        <h3>High-Converting Websites</h3>
+        <p>A professionally built roofing website optimized to convert visitors into booked estimates — with emergency-focused copy and mobile-first design.</p>
+        <ul class="svc-list">
+          <li>Custom roofing website build</li>
+          <li>Emergency repair landing pages</li>
+          <li>Mobile-first responsive design</li>
+          <li>Speed & Core Web Vitals optimized</li>
+          <li>Conversion-focused copywriting</li>
+          <li>Domain & hosting setup</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.3s">
+        <div class="svc-ico si-or">📧</div>
+        <h3>Cold Outreach & Deal Flow</h3>
+        <p>We build outbound prospecting systems that generate pipeline from scratch — targeting property managers, HOAs, and insurance adjusters.</p>
+        <ul class="svc-list">
+          <li>Cold email deal flow (Clay.com)</li>
+          <li>LinkedIn outreach sequences</li>
+          <li>Insurance adjuster targeting</li>
+          <li>HOA & property manager outreach</li>
+          <li>Multi-touch follow-up campaigns</li>
+          <li>Response handling & booking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY CLIENTCLICK ════ -->
+<section class="diff" id="diff">
+  <div class="sw">
+    <div class="diff-grid">
+      <div class="reveal">
+        <div class="sey ey-pk">Why ClientClick</div>
+        <h2 class="sh2">We're not a marketing agency.<br/>We're your <em>deal generation partner.</em></h2>
+        <p class="slead" style="margin-bottom:36px;">Most agencies deliver reports. We deliver booked revenue. The difference is our obsession with the full customer journey — from the first ad impression to the signed contract.</p>
+        <div class="diff-cards">
+          <div class="diff-card">
+            <div class="di si-pk">🏆</div>
+            <div><h4>Exclusive Territory — One Client Per Market</h4><p>We never work with two competing roofing companies in the same zip codes. When you're in, your competitors can't be.</p></div>
+          </div>
+          <div class="diff-card">
+            <div class="di si-cy">⚡</div>
+            <div><h4>Live in 7 Days, Not 7 Weeks</h4><p>Our done-for-you setup has your ads running, your AI live, and your booking calendar filling within a single week.</p></div>
+          </div>
+          <div class="diff-card">
+            <div class="di si-gn">🔒</div>
+            <div><h4>Results Guaranteed or We Work Free</h4><p>If we don't deliver agreed results in your first 30 days, we keep working at zero charge until we do. No excuses.</p></div>
+          </div>
+          <div class="diff-card">
+            <div class="di si-yw">📊</div>
+            <div><h4>Full Transparency — Real-Time Dashboard</h4><p>See exactly where every dollar goes and what it produces. Cost-per-lead, cost-per-booking, and revenue generated — live.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="comp-tbl">
+          <div class="comp-hdr">
+            <span style="color:rgba(255,255,255,.35);">Feature</span>
+            <span class="cc">ClientClick</span>
+            <span class="ot">Others</span>
+          </div>
+          <div class="comp-row"><span class="comp-feat">Exclusive per market</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">AI lead qualification</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">Auto booking system</span><span class="comp-yes">✓</span><span class="comp-pt">Sometimes</span></div>
+          <div class="comp-row"><span class="comp-feat">Missed call text-back</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">Results guarantee</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">Live in 7 days</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">Review automation</span><span class="comp-yes">✓</span><span class="comp-pt">Rarely</span></div>
+          <div class="comp-row"><span class="comp-feat">Real-time dashboard</span><span class="comp-yes">✓</span><span class="comp-pt">Sometimes</span></div>
+          <div class="comp-row"><span class="comp-feat">Cold outreach system</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+          <div class="comp-row"><span class="comp-feat">Roofing specialists only</span><span class="comp-yes">✓</span><span class="comp-no">✗</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ RESULTS ════ -->
+<section class="results" id="results">
+  <div class="sw">
+    <div class="results-intro reveal">
+      <div class="sey ey-pk">Real Results</div>
+      <h2 class="sh2">Numbers that matter to a <em>roofing business owner.</em></h2>
+      <p class="slead">We measure success the way you do — jobs booked, revenue collected, and time saved. Here's what our system produces across our contractor portfolio.</p>
+    </div>
+    <div class="metrics">
+      <div class="mc mc-pk reveal"><div class="mc-val mv-pk">$312K</div><div class="mc-lbl">Revenue generated for clients in the last 90 days</div></div>
+      <div class="mc mc-cy reveal" style="transition-delay:.1s"><div class="mc-val mv-cy">4.7m</div><div class="mc-lbl">Average response time to emergency leads</div></div>
+      <div class="mc mc-gn reveal" style="transition-delay:.2s"><div class="mc-val mv-gn">3–5×</div><div class="mc-lbl">More booked appointments per week vs. before</div></div>
+      <div class="mc mc-yw reveal" style="transition-delay:.3s"><div class="mc-val mv-yw">7 days</div><div class="mc-lbl">Average time from signup to first booked job</div></div>
+    </div>
+    <div class="testi-grid">
+      <div class="tc-card reveal">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-res">+$74K in 60 days</div>
+        <p>"Before ClientClick we were chasing every lead manually. Now our phone rings before we wake up. The missed-call text system alone paid for itself in the first week."</p>
+        <div class="tc-auth"><strong>Marcus T.</strong><span>Emergency Roofing Co. — Dallas, TX</span></div>
+      </div>
+      <div class="tc-card reveal" style="transition-delay:.1s">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-res">Booked 3 weeks solid</div>
+        <p>"Three hail storms hit and we were the only roofer in town booked solid for 3 weeks straight. The emergency repair targeting was exactly what we needed."</p>
+        <div class="tc-auth"><strong>Jason R.</strong><span>Ridge Line Roofing — Columbus, OH</span></div>
+      </div>
+      <div class="tc-card reveal" style="transition-delay:.2s">
+        <div class="tc-stars">★★★★★</div>
+        <div class="tc-res">4 jobs booked at lunch</div>
+        <p>"The AI chatbot closes jobs while I'm on the roof. I checked my phone at lunch and had 4 new appointments booked with zero effort on my end. This is leverage."</p>
+        <div class="tc-auth"><strong>Derek M.</strong><span>StormShield Roofing — Atlanta, GA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHO WE SERVE ════ -->
+<section class="who" id="who">
+  <div class="sw">
+    <div class="tc reveal" style="margin-bottom:56px;">
+      <div class="sey ey-wh">Who We Serve</div>
+      <h2 class="sh2">Built for roofing contractors who are <em>serious about growth.</em></h2>
+      <p class="slead" style="margin:0 auto;">We don't work with every contractor. We go deep with roofing companies who are ready to scale and willing to commit to the process.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card wc-feat reveal">
+        <div class="wtag wt-pk">Best Fit</div>
+        <h3>Emergency Repair Specialists</h3>
+        <p>You respond to storm damage, hail, wind, and urgent leaks. You need leads fast when weather hits — and our system is built for exactly this speed.</p>
+        <ul class="who-list">
+          <li>Storm damage response teams</li>
+          <li>Hail & wind damage specialists</li>
+          <li>Emergency leak repair crews</li>
+          <li>Insurance claim processors</li>
+          <li>24/7 emergency service companies</li>
+        </ul>
+      </div>
+      <div class="who-card reveal" style="transition-delay:.1s">
+        <div class="wtag wt-cy">Great Fit</div>
+        <h3>Residential Roofing Companies</h3>
+        <p>Full replacement, re-roofing, new construction. You run a volume business and need a consistent pipeline of homeowner leads every week.</p>
+        <ul class="who-list">
+          <li>Full roof replacement companies</li>
+          <li>Re-roofing specialists</li>
+          <li>New home construction roofers</li>
+          <li>Flat roof & specialty systems</li>
+          <li>Metal roofing contractors</li>
+        </ul>
+      </div>
+      <div class="who-card reveal" style="transition-delay:.2s">
+        <div class="wtag wt-wh">Good Fit</div>
+        <h3>Growing Roofing Businesses</h3>
+        <p>You've proven your craft and are ready to build real systems. You're tired of feast-and-famine and want predictable, scalable deal flow.</p>
+        <ul class="who-list">
+          <li>Owner-operators scaling to crews</li>
+          <li>Regional expansion companies</li>
+          <li>Franchise roofing operations</li>
+          <li>Multi-market roofing groups</li>
+          <li>Contractors ready to systematize</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROCESS ════ -->
+<section class="process" id="process">
+  <div class="sw">
+    <div class="proc-intro reveal">
+      <div class="sey ey-cy">The Process</div>
+      <h2 class="sh2">From signed agreement to <em>first booked job</em> in 7 days.</h2>
+      <p class="slead">We've refined this onboarding to be as fast and frictionless as possible. You shouldn't wait weeks to see results — and with our system, you don't.</p>
+    </div>
+    <div class="proc-timeline">
+      <div class="proc-step reveal">
+        <div class="pr-l">
+          <div class="ps-card"><div class="ps-day">Day 0</div><h4>Strategy Call & Market Claim</h4><p>We audit your current situation, confirm your territory is available, and map out your custom growth plan. This call determines whether we're the right fit for each other.</p></div>
+        </div>
+        <div class="pr-c"><div class="ps-bub pb-pk">01</div></div>
+        <div class="pr-r"></div>
+      </div>
+      <div class="proc-step reveal" style="transition-delay:.1s">
+        <div class="pr-l pl-empty"></div>
+        <div class="pr-c"><div class="ps-bub pb-cy">02</div></div>
+        <div class="pr-r">
+          <div class="ps-card"><div class="ps-day">Days 1–3</div><h4>Build & Configure Your System</h4><p>We build your ads, configure your AI agent, set up your booking calendar, and integrate everything into your CRM. You don't touch a single tool.</p></div>
+        </div>
+      </div>
+      <div class="proc-step reveal" style="transition-delay:.2s">
+        <div class="pr-l">
+          <div class="ps-card"><div class="ps-day">Days 3–5</div><h4>Launch Ads & Activate Automation</h4><p>Campaigns go live. Your AI agent activates. Your booking system opens. We monitor in real-time and make immediate adjustments to maximize early performance.</p></div>
+        </div>
+        <div class="pr-c"><div class="ps-bub pb-pk">03</div></div>
+        <div class="pr-r"></div>
+      </div>
+      <div class="proc-step reveal" style="transition-delay:.3s">
+        <div class="pr-l pl-empty"></div>
+        <div class="pr-c"><div class="ps-bub pb-cy">04</div></div>
+        <div class="pr-r">
+          <div class="ps-card"><div class="ps-day">Day 7+</div><h4>First Jobs Booked — System Runs Itself</h4><p>Leads flow in, the AI qualifies them, and appointments land in your calendar. You show up to estimates. We handle optimization, reporting, and scaling every week.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRICING ════ -->
+<section class="pricing" id="pricing">
+  <div class="sw">
+    <div class="price-intro reveal">
+      <div class="sey ey-pk">Pricing</div>
+      <h2 class="sh2">Pick your entry point. <em>Scale at your own speed.</em></h2>
+      <p class="slead">Every tier is a complete, standalone system. Start where it makes sense for your business today and upgrade as you grow.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="pc-tier">Tier 01 · Starter</div>
+        <div class="pc-price">$47</div>
+        <div class="pc-cad">one-time</div>
+        <div class="pc-name">Roofing Website Template</div>
+        <hr class="pc-div"/>
+        <ul class="pc-list">
+          <li>Done-for-you roofing website</li>
+          <li>Emergency-optimized copy</li>
+          <li>Mini course: setup in a weekend</li>
+          <li>Domain & hosting walkthrough</li>
+          <li>Mobile-first, fast-loading design</li>
+        </ul>
+      </div>
+      <div class="price-card reveal" style="transition-delay:.1s">
+        <div class="pc-tier">Tier 02 · Self-Serve</div>
+        <div class="pc-price">$99</div>
+        <div class="pc-cad">per month</div>
+        <div class="pc-name">DIY Ads Simplifier</div>
+        <hr class="pc-div"/>
+        <ul class="pc-list">
+          <li>Meta Ads Launcher (Uphex)</li>
+          <li>Pre-built roofing ad templates</li>
+          <li>Mini course: launch ads easily</li>
+          <li>Emergency repair swipe file</li>
+          <li>Monthly strategy updates</li>
+        </ul>
+      </div>
+      <div class="price-card pf reveal" style="transition-delay:.2s">
+        <div class="pc-rib">Most Popular</div>
+        <div class="pc-tier">Tier 03 · Done-With-You</div>
+        <div class="pc-price">$999</div>
+        <div class="pc-cad">per month</div>
+        <div class="pc-name">Automation Optimization Suite</div>
+        <hr class="pc-div"/>
+        <ul class="pc-list">
+          <li>Missed call text-back (60s)</li>
+          <li>AI website chatbot 24/7</li>
+          <li>Google Review automation</li>
+          <li>AI Qualifying Agent (calls + DMs)</li>
+          <li>Automatic calendar booking</li>
+          <li>Weekly social content factory</li>
+          <li>Real-time performance dashboard</li>
+        </ul>
+      </div>
+      <div class="price-card reveal" style="transition-delay:.3s">
+        <div class="pc-tier">Tier 04 · Full Partnership</div>
+        <div class="pc-price">10%</div>
+        <div class="pc-cad">revenue share / month</div>
+        <div class="pc-name">Done-For-You Growth System</div>
+        <hr class="pc-div"/>
+        <ul class="pc-list">
+          <li>Full ad management (Meta + Google + TikTok)</li>
+          <li>SEO & local ranking</li>
+          <li>Cold email deal flow (Clay.com)</li>
+          <li>Everything in Tier 03 included</li>
+          <li>Dedicated account strategist</li>
+          <li>We only win when you win</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section class="faq" id="faq">
+  <div class="sw">
+    <div class="faq-intro reveal">
+      <div class="sey ey-wh">FAQ</div>
+      <h2 class="sh2">Questions roofing contractors actually ask us.</h2>
+    </div>
+    <div class="faq-cols">
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">What makes ClientClick different from other agencies? <span class="faq-ico">+</span></div><div class="faq-a">We specialize exclusively in roofing — no generalist clients. We've built a complete deal generation system covering lead generation, AI qualification, automated booking, and reputation management in one integrated stack. And we back it with a results guarantee.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">How quickly can I expect to see results? <span class="faq-ico">+</span></div><div class="faq-a">Most clients see their first booked appointments within 7–14 days of launch. Emergency repair is a high-intent vertical — when a homeowner has a storm-damaged roof, they need someone now. Our system intercepts that urgency at exactly the right moment.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">What does "exclusive per market" actually mean? <span class="faq-ico">+</span></div><div class="faq-a">Once we accept you as a client, we will not onboard another roofing contractor targeting the same zip codes. We can't run conflicting strategies for competing companies — it would undermine your results. First claimed, first protected.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">Do I need to be tech-savvy to use your system? <span class="faq-ico">+</span></div><div class="faq-a">No. The Done-For-You and Done-With-You tiers require zero technical involvement from you. We build everything, configure everything, and manage everything. You need to know how to answer your phone and show up to estimates.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">What is your guarantee exactly? <span class="faq-ico">+</span></div><div class="faq-a">If we don't hit the agreed KPIs in your first 30 days, we work for free until we do — or we refund you. We define the KPIs together before we start so there's no ambiguity. We've never had to invoke this guarantee, but it exists so you have zero risk.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">What ad platforms do you use? <span class="faq-ico">+</span></div><div class="faq-a">We primarily use Meta (Facebook + Instagram) and Google Search for lead generation. For the right accounts, we also deploy TikTok and run cold email outreach through Clay.com. The mix depends on your market, budget, and roofing niche.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">How does the AI lead qualification work? <span class="faq-ico">+</span></div><div class="faq-a">When a lead comes in through any channel, our AI responds within 60 seconds via SMS or chat. It asks qualifying questions, gauges urgency, answers objections, and either books the appointment or flags the lead for your team to handle manually.</div></div>
+      <div class="faq-item" onclick="tFAQ(this)"><div class="faq-q">Can I start small and upgrade later? <span class="faq-ico">+</span></div><div class="faq-a">Absolutely. Many clients start with Tier 01 or Tier 02 to test the waters, then upgrade as they see results. Each tier is designed to layer on top of the previous one — your investment compounds as you scale up the stack.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section class="cta-final" id="contact">
+  <div class="cta-inner">
+    <div class="cta-kicker reveal">Ready to Scale?</div>
+    <h2 class="reveal">Your competitors are reading this.<br/><em>Will you act first?</em></h2>
+    <p class="reveal">Book a free 15-minute strategy call. We'll confirm your market is available, walk you through exactly what we'd build for your business, and tell you honestly if we're the right fit.</p>
+    <div class="cta-btns reveal">
+      <a href="https://calendly.com/YOUR_LINK_HERE" class="btn-primary" style="font-size:16px;padding:18px 44px;">Book My Free Strategy Call →</a>
+    </div>
+    <p class="cta-note reveal">No pressure. No pitch deck. Just a real conversation about your roofing business.</p>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="nav-logo" style="margin-bottom:14px;">
+        <img src="images/logo.png" alt="" class="logo-img" width="32" height="32"/>
+        <span class="logo-mark">clientclick.ai</span>
+      </div>
+      <p class="ft-tagline">Deal generation and growth systems built exclusively for roofing contractors. We fill your calendar with high-value jobs — on autopilot.</p>
+    </div>
+    <div class="ft-col">
+      <h5>Services</h5>
+      <a href="#services">Paid Media Management</a>
+      <a href="#services">AI Lead Qualification</a>
+      <a href="#services">Automated Booking</a>
+      <a href="#services">Reputation Management</a>
+      <a href="#services">Website Design</a>
+      <a href="#services">Cold Outreach</a>
+    </div>
+    <div class="ft-col">
+      <h5>Company</h5>
+      <a href="#what">What We Do</a>
+      <a href="#results">Results</a>
+      <a href="#process">How It Works</a>
+      <a href="#who">Who We Serve</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="ft-col">
+      <h5>Get Started</h5>
+      <a href="#contact">Book a Free Call</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2026 ClientClick.ai — All rights reserved. Results guaranteed or we work free.</p>
+    <div class="ft-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>
+  /* SCROLL REVEAL */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);} });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  /* FAQ */
+  function tFAQ(item){
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  }
+
+  /* MOBILE NAV */
+  function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
+
+  /* ACTIVE NAV HIGHLIGHT */
+  const secs=document.querySelectorAll('section[id]');
+  const navAs=document.querySelectorAll('.nav-a');
+  window.addEventListener('scroll',()=>{
+    let cur='';
+    secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.getAttribute('id');});
+    navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--pink)':'';});
+  });
+</script>
+</body>
+</html>
