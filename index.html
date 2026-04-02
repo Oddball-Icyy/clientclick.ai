@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ClientClick.ai — Deal Generation & Growth System for Roofing Contractors</title>
+<title>ClientClick — Deal Generation & Growth System for Roofing Contractors</title>
+<link rel="icon" type="image/png" href="images/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -283,10 +284,20 @@ footer .logo-img{height:32px;}
 .proc-intro .slead{margin:0 auto;}
 .proc-timeline{position:relative;max-width:900px;margin:0 auto;}
 .proc-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(244,114,168,.25),rgba(56,189,248,.25),transparent);transform:translateX(-50%);}
-@media(max-width:700px){.proc-timeline::before{left:22px;}}
+@media(max-width:700px){.proc-timeline::before{left:32px;}}
 .proc-step{display:grid;grid-template-columns:1fr 64px 1fr;gap:28px;align-items:start;margin-bottom:60px;}
 .proc-step:last-child{margin-bottom:0;}
-@media(max-width:700px){.proc-step{grid-template-columns:64px 1fr;}.proc-step .pr-r{display:none;}.pl-empty{display:none;}}
+@media(max-width:700px){
+  .proc-step{grid-template-columns:64px 1fr;gap:16px;margin-bottom:24px;}
+  .pr-l,.pr-r{grid-column:2;padding-top:0;}
+  .pr-c{grid-column:1;justify-content:center;padding-top:0;}
+  /* Hide only the placeholder column, not the real right-side cards */
+  .pl-empty{display:none;}
+  .pr-l:empty,.pr-r:empty{display:none;}
+  .ps-card{padding:18px 18px;}
+  .ps-card h4{font-size:15px;}
+  .ps-card p{font-size:13px;}
+}
 .pr-l,.pr-r{padding-top:6px;}
 .pr-c{display:flex;justify-content:center;align-items:flex-start;padding-top:2px;}
 .ps-bub{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:15px;font-weight:900;flex-shrink:0;position:relative;z-index:1;}
@@ -393,8 +404,8 @@ footer{background:rgba(5,10,25,.96);border-top:1px solid var(--bd);padding:64px 
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="images/logo.png" alt="" class="logo-img" width="38" height="38"/>
-    <span class="logo-mark">clientclick.ai</span>
+    <img src="images/logo.png" alt="ClientClick" class="logo-img" width="38" height="38"/>
+    <span class="logo-mark">clientclick</span>
   </a>
   <div class="nav-links">
     <a href="#services" class="nav-a">Services</a>
@@ -923,8 +934,8 @@ footer{background:rgba(5,10,25,.96);border-top:1px solid var(--bd);padding:64px 
   <div class="ft-top">
     <div>
       <div class="nav-logo" style="margin-bottom:14px;">
-        <img src="images/logo.png" alt="" class="logo-img" width="32" height="32"/>
-        <span class="logo-mark">clientclick.ai</span>
+        <img src="images/logo.png" alt="ClientClick" class="logo-img" width="32" height="32"/>
+        <span class="logo-mark">clientclick</span>
       </div>
       <p class="ft-tagline">Deal generation and growth systems built exclusively for roofing contractors. We fill your calendar with high-value jobs — on autopilot.</p>
     </div>
@@ -952,7 +963,7 @@ footer{background:rgba(5,10,25,.96);border-top:1px solid var(--bd);padding:64px 
     </div>
   </div>
   <div class="ft-bot">
-    <p class="ft-copy">© 2026 ClientClick.ai — All rights reserved. Results guaranteed or we work free.</p>
+    <p class="ft-copy">© 2026 ClientClick — All rights reserved. Results guaranteed or we work free.</p>
     <div class="ft-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
   </div>
 </footer>
