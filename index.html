@@ -66,6 +66,11 @@ footer .logo-img{height:32px;}
 .nav-a:hover{color:var(--pink-dark);}
 .nav-btn{background:var(--pink);color:white;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none;transition:all .2s;letter-spacing:.02em;}
 .nav-btn:hover{background:var(--pink-dark);transform:translateY(-1px);}
+.nav-toolbar{display:none;align-items:center;gap:10px;flex-shrink:0;}
+.nav-btn--bar{font-size:12px;font-weight:700;padding:9px 14px;border-radius:8px;white-space:nowrap;line-height:1.2;}
+@media(max-width:400px){
+  .nav-btn--bar{font-size:11px;padding:8px 10px;}
+}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
 .hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;} /* Changed hamburger bars to pink */
 
@@ -75,12 +80,14 @@ footer .logo-img{height:32px;}
 .mobile-nav a{font-size:22px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;}
 .mobile-nav a:hover{color:var(--pink);}
 .mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
-@media(max-width:768px){
-  nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;}
-  .nav-brand{grid-column:1;}
+/* Tablet + mobile: hide inline nav, show compact CTA + hamburger as one group */
+@media(max-width:1024px){
   .nav-links{display:none;}
-  .hamburger{display:flex;grid-column:3;}
-  .nav-wordmark img{max-width:min(200px,38vw);height:clamp(16px,3.5vw,20px);}
+  .nav-toolbar{display:flex;}
+  .hamburger{display:flex;}
+  nav{gap:12px;}
+  .nav-brand{min-width:0;flex:1 1 auto;}
+  .nav-wordmark img{max-width:min(200px,36vw);height:clamp(14px,3.2vw,20px);}
 }
 
 /* HERO */
@@ -429,9 +436,12 @@ footer{background:rgba(5,10,25,.96);border-top:1px solid var(--bd);padding:64px 
     <a href="#pricing" class="nav-a">Pricing</a>
     <a href="#contact" class="nav-btn">Book a Free Call →</a>
   </div>
-  <button class="hamburger" onclick="openMob()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-toolbar">
+    <a href="#contact" class="nav-btn nav-btn--bar">Book a Free Call →</a>
+    <button class="hamburger" onclick="openMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- ════ HERO ════ -->
