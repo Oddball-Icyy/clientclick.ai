@@ -123,12 +123,48 @@ nav{
   display:inline-block;
 }
 .nav-btn:hover{background:var(--pink-dark);transform:translateY(-1px);}
-.nav-toolbar{display:none;align-items:center;gap:12px;flex-shrink:0;margin-left:auto;}
-.nav-btn--bar{font-size:12px;font-weight:700;padding:10px 18px;border-radius:10px;white-space:nowrap;line-height:1.2;}
-.nav-login--bar{font-size:12px;padding:10px 14px;}
-@media(max-width:400px){
-  .nav-btn--bar{font-size:11px;padding:8px 12px;}
+.nav-toolbar{display:none;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
+.nav-btn--bar{
+  font-size:12px;
+  font-weight:700;
+  padding:9px 14px;
+  border-radius:10px;
+  white-space:nowrap;
+  line-height:1.2;
+  margin-left:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+}
+.nav-login--bar{font-size:12px;padding:9px 12px;margin-left:0;display:inline-flex;align-items:center;justify-content:center;min-height:34px;}
+@media(max-width:1024px){
+  .nav-links{display:none;}
+  .nav-toolbar{display:flex;}
+  .hamburger{display:flex;}
+  nav{gap:12px;padding:12px clamp(12px,3vw,24px);}
+  .nav-brand{min-width:0;flex:1 1 auto;overflow:hidden;}
+  .nav-logo{gap:8px;min-width:0;}
+  .nav-wordmark{min-width:0;overflow:hidden;}
+  .nav-wordmark-img{height:clamp(14px,3.2vw,20px);max-width:min(140px,32vw);object-fit:contain;object-position:left center;}
+  .logo-img{height:32px;}
+  .nav-toolbar{gap:8px;flex-shrink:0;}
+  .nav-btn--bar{font-size:11px;padding:8px 11px;}
   .nav-login--bar{font-size:11px;padding:8px 10px;}
+}
+@media(max-width:480px){
+  nav{padding:10px 12px;gap:8px;}
+  .nav-toolbar{gap:6px;}
+  .nav-btn--bar{font-size:10px;padding:7px 9px;border-radius:8px;letter-spacing:0;}
+  .nav-login--bar{font-size:10px;padding:7px 8px;border-radius:8px;}
+  .logo-img{height:28px;}
+  .nav-logo{gap:6px;}
+  .nav-wordmark-img{height:13px;max-width:96px;}
+}
+@media(max-width:360px){
+  .nav-wordmark{display:none;}
+  .nav-btn--bar{padding:7px 8px;}
+  .nav-login--bar{padding:7px 7px;}
 }
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
 .hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;}
@@ -137,15 +173,6 @@ nav{
 .mobile-nav a{font-size:22px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;}
 .mobile-nav a:hover{color:var(--pink);}
 .mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
-@media(max-width:1024px){
-  .nav-links{display:none;}
-  .nav-toolbar{display:flex;}
-  .hamburger{display:flex;}
-  nav{gap:16px;padding:12px clamp(16px,4vw,24px);}
-  .nav-brand{min-width:0;flex:1 1 auto;}
-  .nav-wordmark-img{height:clamp(16px,3.5vw,20px);}
-  .logo-img{height:34px;}
-}
 
 /* HERO */
 .hero{position:relative;padding:110px 6vw 100px;overflow:hidden;min-height:92vh;display:flex;align-items:center;}
@@ -542,7 +569,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
   <a href="#who" onclick="closeMob()">Who We Serve</a>
   <a href="#pricing" onclick="closeMob()">Pricing</a>
   <a href="https://app.clientclick.ai/" title="Log in to ClientClick" onclick="closeMob()">Login</a>
-  <a href="#contact" class="btn-primary" onclick="closeMob()">Book a Free Call</a>
+  <a href="#contact" class="btn-primary" onclick="closeMob()">Book a Call</a>
 </div>
 
 <!-- TICKER -->
@@ -582,7 +609,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
   </div>
   <div class="nav-toolbar">
     <a href="https://app.clientclick.ai/" class="nav-login nav-login--bar" title="Log in to ClientClick">Login</a>
-    <a href="#contact" class="nav-btn nav-btn--bar">Book a Free Call</a>
+    <a href="#contact" class="nav-btn nav-btn--bar">Book a Call</a>
     <button class="hamburger" onclick="openMob()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
