@@ -92,6 +92,20 @@ nav{
   white-space:nowrap;
 }
 .nav-a:hover{color:var(--pink-dark);}
+.nav-login{
+  font-size:14px;
+  font-weight:700;
+  padding:11px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--pink);
+  border:1px solid rgba(244,114,168,.4);
+  background:transparent;
+  transition:background .2s,border-color .2s,color .2s;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.nav-login:hover{background:rgba(244,114,168,.08);border-color:var(--pink);color:var(--pink-dark);}
 .nav-btn{
   background:var(--pink);
   color:var(--white);
@@ -111,8 +125,10 @@ nav{
 .nav-btn:hover{background:var(--pink-dark);transform:translateY(-1px);}
 .nav-toolbar{display:none;align-items:center;gap:12px;flex-shrink:0;margin-left:auto;}
 .nav-btn--bar{font-size:12px;font-weight:700;padding:10px 18px;border-radius:10px;white-space:nowrap;line-height:1.2;}
+.nav-login--bar{font-size:12px;padding:10px 14px;}
 @media(max-width:400px){
   .nav-btn--bar{font-size:11px;padding:8px 12px;}
+  .nav-login--bar{font-size:11px;padding:8px 10px;}
 }
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
 .hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;}
@@ -455,12 +471,48 @@ nav{
 .cta-final::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(244,114,168,.1) 0%,transparent 65%);pointer-events:none;}
 .cta-final::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(56,189,248,.07) 0%,transparent 65%);pointer-events:none;}
 .cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.cta-inner--book{max-width:860px;}
 .cta-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:24px;}
 .cta-inner h2{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,60px);font-weight:400;line-height:1.08;color:var(--white);margin-bottom:20px;}
 .cta-inner h2 em{font-style:italic;color:var(--pink);}
 .cta-inner > p{font-size:17px;color:rgba(255,255,255,.4);margin-bottom:44px;line-height:1.8;}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
 .cta-note{font-size:13px;color:rgba(255,255,255,.22);}
+.booking-wrap{
+  position:relative;
+  z-index:1;
+  max-width:760px;
+  margin:44px auto 0;
+  text-align:left;
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(244,114,168,.28);
+  box-shadow:0 28px 90px rgba(244,114,168,.16);
+}
+.booking-wrap::before{
+  content:'';
+  display:block;
+  height:5px;
+  background:linear-gradient(90deg,var(--pink),var(--cyan));
+}
+.booking-top{padding:24px 28px 12px;}
+.booking-eyebrow{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--pink-dark);
+  margin-bottom:8px;
+}
+.booking-sub{font-size:14px;color:var(--gray-500);line-height:1.6;margin:0;}
+.booking-frame{width:100%;min-height:720px;background:#fff;}
+.booking-frame iframe{display:block;width:100%;min-height:720px;border:none;background:#fff;}
+@media(max-width:640px){
+  .booking-top{padding:20px 18px 10px;}
+  .booking-frame,.booking-frame iframe{min-height:640px;}
+}
 
 /* FOOTER */
 footer{background:var(--white);border-top:1px solid var(--bdl);padding:64px 6vw 32px;}
@@ -489,6 +541,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
   <a href="#process" onclick="closeMob()">How It Works</a>
   <a href="#who" onclick="closeMob()">Who We Serve</a>
   <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="https://app.clientclick.ai/" title="Log in to ClientClick" onclick="closeMob()">Login</a>
   <a href="#contact" class="btn-primary" onclick="closeMob()">Book a Free Call</a>
 </div>
 
@@ -524,9 +577,11 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
     <a href="#process" class="nav-a">How It Works</a>
     <a href="#who" class="nav-a">Who We Serve</a>
     <a href="#pricing" class="nav-a">Pricing</a>
+    <a href="https://app.clientclick.ai/" class="nav-login" title="Log in to ClientClick">Login</a>
     <a href="#contact" class="nav-btn">Book a Free Call</a>
   </div>
   <div class="nav-toolbar">
+    <a href="https://app.clientclick.ai/" class="nav-login nav-login--bar" title="Log in to ClientClick">Login</a>
     <a href="#contact" class="nav-btn nav-btn--bar">Book a Free Call</a>
     <button class="hamburger" onclick="openMob()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1017,6 +1072,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
           <li>Email marketing</li>
           <li>Paid ads management</li>
           <li>Multi-location scaling</li>
+          <li>Monthly analytics reporting</li>
           <li>Dedicated growth support</li>
           <li>Revenue-share options</li>
         </ul>
@@ -1048,14 +1104,20 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
 
 <!-- ════ FINAL CTA ════ -->
 <section class="cta-final" id="contact">
-  <div class="cta-inner">
+  <div class="cta-inner cta-inner--book">
     <div class="cta-kicker reveal">Ready to Grow?</div>
     <h2 class="reveal">Your competitors are reading this.<br/><em>Will you act first?</em></h2>
-    <p class="reveal">Book a free 15-minute strategy call. We'll confirm your service area is available, show you exactly what we'd build for your business, and tell you honestly whether we're the right fit.</p>
-    <div class="cta-btns reveal">
-      <a href="https://calendly.com/YOUR_LINK_HERE" class="btn-primary" style="font-size:16px;padding:18px 44px;">Book a Call</a>
+    <p class="reveal">Book a free strategy call. We'll confirm your service area is available, show you exactly what we'd build for your business, and tell you honestly whether we're the right fit.</p>
+    <div class="booking-wrap reveal">
+      <div class="booking-top">
+        <span class="booking-eyebrow">Pick your time</span>
+        <p class="booking-sub">Available 9:00 AM – 6:00 PM · 30-minute slots · synced with our calendar</p>
+      </div>
+      <div class="booking-frame">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/pHgf5glFWicHiD5S1xiM" title="Book a strategy call with ClientClick" id="clientclick-booking" scrolling="no" allow="payment *; geolocation *; microphone *; camera *"></iframe>
+      </div>
     </div>
-    <p class="cta-note reveal">No pressure. No pitch deck. Just a straight conversation about your business and what's possible.</p>
+    <p class="cta-note reveal" style="margin-top:24px;">No pressure. No pitch deck. Just a straight conversation about your business and what's possible.</p>
   </div>
 </section>
 
@@ -1127,5 +1189,6 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
     navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--pink-dark)':'var(--pink)';});
   });
 </script>
+<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 </body>
 </html>
