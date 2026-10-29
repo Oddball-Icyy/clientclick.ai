@@ -380,13 +380,13 @@ nav{
 .fq-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--blue));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:white;flex-shrink:0;letter-spacing:-.02em;}
 .fq-name{font-size:15px;font-weight:700;color:var(--white);display:block;}
 .fq-role{font-size:12px;color:rgba(255,255,255,.4);display:block;margin-top:2px;}
-.canadian-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px;}
+.canadian-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:460px;}
 .ca-leaf-float{
-  width:min(280px,70vw);
+  width:min(480px,92vw);
   height:auto;
   display:block;
-  color:var(--pink);
-  filter:drop-shadow(0 20px 48px rgba(244,114,168,.35));
+  object-fit:contain;
+  filter:drop-shadow(0 24px 56px rgba(244,114,168,.4));
   animation:leafFloat 5.5s ease-in-out infinite;
 }
 @keyframes leafFloat{
@@ -394,8 +394,8 @@ nav{
   50%{transform:translateY(-14px) rotate(2deg)}
 }
 @media(max-width:860px){
-  .canadian-visual{min-height:260px;margin-top:12px;}
-  .ca-leaf-float{width:min(200px,55vw);}
+  .canadian-visual{min-height:320px;margin-top:12px;}
+  .ca-leaf-float{width:min(360px,88vw);}
 }
 
 /* RESULTS */
@@ -1021,9 +1021,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
       </div>
       <div class="reveal" style="transition-delay:.2s">
         <div class="canadian-visual">
-          <svg class="ca-leaf-float" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maple leaf">
-            <path fill="currentColor" d="M50 4l5.5 22 18-9-9 20 23 6-20 13 15 20-22-8 2.5 26L50 78l-13 16 2.5-26-22 8 15-20-20-13 23-6-9-20 18 9L50 4zm-2.5 78v24h5V82z"/>
-          </svg>
+          <img class="ca-leaf-float" src="images/canada-flag-pink.png" alt="Canadian maple leaf flag" width="480" height="360" decoding="async"/>
         </div>
       </div>
     </div>
