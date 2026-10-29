@@ -138,6 +138,13 @@ nav{
   min-height:34px;
 }
 .nav-login--bar{font-size:12px;padding:9px 12px;margin-left:0;display:inline-flex;align-items:center;justify-content:center;min-height:34px;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px 6px;flex-shrink:0;margin-left:2px;-webkit-tap-highlight-color:transparent;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-size:22px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;}
+.mobile-nav a:hover{color:var(--pink);}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
 @media(max-width:1024px){
   .nav-links{display:none;}
   .nav-toolbar{display:flex;}
@@ -151,6 +158,14 @@ nav{
   .nav-toolbar{gap:8px;flex-shrink:0;}
   .nav-btn--bar{font-size:11px;padding:8px 11px;}
   .nav-login--bar{font-size:11px;padding:8px 10px;}
+  .hamburger{
+    border:1px solid rgba(244,114,168,.4);
+    border-radius:10px;
+    padding:9px 10px;
+    min-height:34px;
+    transition:background .2s,border-color .2s;
+  }
+  .hamburger:hover{background:rgba(244,114,168,.08);border-color:var(--pink);}
 }
 @media(max-width:480px){
   nav{padding:10px 12px;gap:8px;}
@@ -160,19 +175,14 @@ nav{
   .logo-img{height:28px;}
   .nav-logo{gap:6px;}
   .nav-wordmark-img{height:13px;max-width:96px;}
+  .hamburger{padding:8px 9px;gap:5px;border-radius:8px;min-height:32px;}
+  .hamburger span{width:22px;height:2.5px;}
 }
 @media(max-width:360px){
   .nav-wordmark{display:none;}
   .nav-btn--bar{padding:7px 8px;}
   .nav-login--bar{padding:7px 7px;}
 }
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--pink);border-radius:2px;}
-.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.mobile-nav.open{display:flex;}
-.mobile-nav a{font-size:22px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;}
-.mobile-nav a:hover{color:var(--pink);}
-.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
 
 /* HERO */
 .hero{position:relative;padding:110px 6vw 100px;overflow:hidden;min-height:92vh;display:flex;align-items:center;}
@@ -350,6 +360,43 @@ nav{
 .comp-yes{color:#10B981;font-size:16px;font-weight:800;}
 .comp-no{color:rgba(255,255,255,.18);font-size:15px;}
 .comp-pt{color:#FBBF24;font-size:12px;font-weight:600;}
+
+/* CANADIAN / FOUNDER */
+.canadian{padding:110px 0;background:var(--navy);position:relative;overflow:hidden;}
+.canadian::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 15% 50%,rgba(244,114,168,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 85% 40%,rgba(75,142,241,.1) 0%,transparent 65%);pointer-events:none;}
+.canadian-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
+@media(max-width:860px){.canadian-grid{grid-template-columns:1fr;gap:48px;}}
+.canadian-cards{display:flex;flex-direction:column;gap:14px;margin-top:36px;}
+.canadian-card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:16px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;transition:all .2s;}
+.canadian-card:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+.ca-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.canadian-card h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:5px;}
+.canadian-card p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;}
+.founder-quote{margin-top:40px;padding:28px 30px;background:linear-gradient(135deg,rgba(244,114,168,.08),rgba(75,142,241,.06));border:1px solid rgba(244,114,168,.2);border-radius:20px;position:relative;}
+.founder-quote::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue));border-radius:20px 20px 0 0;}
+.fq-mark{font-family:'DM Serif Display',serif;font-size:48px;line-height:1;color:var(--pink);opacity:.35;margin-bottom:-8px;}
+.founder-quote blockquote{font-family:'DM Serif Display',serif;font-size:clamp(17px,2vw,20px);font-style:italic;color:rgba(255,255,255,.82);line-height:1.65;margin-bottom:20px;}
+.founder-quote cite{display:flex;align-items:center;gap:14px;font-style:normal;}
+.fq-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--blue));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:white;flex-shrink:0;letter-spacing:-.02em;}
+.fq-name{font-size:15px;font-weight:700;color:var(--white);display:block;}
+.fq-role{font-size:12px;color:rgba(255,255,255,.4);display:block;margin-top:2px;}
+.canadian-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px;}
+.ca-leaf-float{
+  width:min(280px,70vw);
+  height:auto;
+  display:block;
+  color:var(--pink);
+  filter:drop-shadow(0 20px 48px rgba(244,114,168,.35));
+  animation:leafFloat 5.5s ease-in-out infinite;
+}
+@keyframes leafFloat{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-14px) rotate(2deg)}
+}
+@media(max-width:860px){
+  .canadian-visual{min-height:260px;margin-top:12px;}
+  .ca-leaf-float{width:min(200px,55vw);}
+}
 
 /* RESULTS */
 .results{padding:110px 0;background:var(--navy);}
@@ -589,6 +636,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
   <a href="#approach" onclick="closeMob()">Our Approach</a>
   <a href="#process" onclick="closeMob()">How It Works</a>
   <a href="#who" onclick="closeMob()">Who We Serve</a>
+  <a href="#story" onclick="closeMob()">Our Story</a>
   <a href="#pricing" onclick="closeMob()">Pricing</a>
   <a href="https://app.clientclick.ai/" title="Log in to ClientClick" onclick="closeMob()">Login</a>
   <a href="#contact" class="btn-primary" onclick="closeMob()">Book a Call</a>
@@ -625,6 +673,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
     <a href="#approach" class="nav-a">Our Approach</a>
     <a href="#process" class="nav-a">How It Works</a>
     <a href="#who" class="nav-a">Who We Serve</a>
+    <a href="#story" class="nav-a">Our Story</a>
     <a href="#pricing" class="nav-a">Pricing</a>
     <a href="https://app.clientclick.ai/" class="nav-login" title="Log in to ClientClick">Login</a>
     <a href="#contact" class="nav-btn">Book a Free Call</a>
@@ -936,6 +985,51 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
   </div>
 </section>
 
+<!-- ════ PROUDLY CANADIAN ════ -->
+<section class="canadian" id="story">
+  <div class="sw">
+    <div class="canadian-grid">
+      <div class="reveal">
+        <div class="sey ey-cy">Proudly Canadian · Ontario</div>
+        <h2 class="sh2">Canadian-built. <em>Mission-driven.</em></h2>
+        <p class="slead" style="margin-bottom:0;">ClientClick is proudly Canadian-owned and operated out of Ontario — built by people who believe local service businesses deserve the same growth systems as the big players, without the corporate runaround.</p>
+        <div class="founder-quote">
+          <div class="fq-mark">"</div>
+          <blockquote>Being from Canada isn't just where we're based — it's who we are. I founded ClientClick with one mission: help local businesses scale further than they ever thought possible, so owners like you can buy your time back and live the life you've been working toward.</blockquote>
+          <cite>
+            <span class="fq-av" aria-hidden="true">EO</span>
+            <span>
+              <span class="fq-name">Ebenezer Ofori</span>
+              <span class="fq-role">Founder &amp; CEO · ClientClick</span>
+            </span>
+          </cite>
+        </div>
+        <div class="canadian-cards">
+          <div class="canadian-card">
+            <div class="ca-ico si-pk" aria-hidden="true">🍁</div>
+            <div><h4>Canadian-Owned &amp; Operated</h4><p>A homegrown company built on the values of hard work, honesty, and showing up for the people who keep our communities running.</p></div>
+          </div>
+          <div class="canadian-card">
+            <div class="ca-ico si-cy" aria-hidden="true">📍</div>
+            <div><h4>Headquartered in Ontario</h4><p>Based in Ontario and serving local service businesses across North America — with the personal touch only a Canadian team can deliver.</p></div>
+          </div>
+          <div class="canadian-card">
+            <div class="ca-ico si-gn" aria-hidden="true">🚀</div>
+            <div><h4>Time Back, Dreams Forward</h4><p>Every system we build is designed so you spend less time chasing leads and more time with the people and life you've been building your business for.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="canadian-visual">
+          <svg class="ca-leaf-float" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maple leaf">
+            <path fill="currentColor" d="M50 4l5.5 22 18-9-9 20 23 6-20 13 15 20-22-8 2.5 26L50 78l-13 16 2.5-26-22 8 15-20-20-13 23-6-9-20 18 9L50 4zm-2.5 78v24h5V82z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════ OUR APPROACH ════ -->
 <section class="results" id="approach">
   <div class="sw">
@@ -1230,6 +1324,7 @@ footer .nav-wordmark-img{mix-blend-mode:normal;}
     </div>
     <div class="ft-col">
       <h5>Company</h5>
+      <a href="#story">Our Story</a>
       <a href="#approach">Our Approach</a>
       <a href="#process">How It Works</a>
       <a href="#pricing">Pricing</a>
